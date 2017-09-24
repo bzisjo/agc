@@ -1,8 +1,8 @@
 module mapping_function(
 	input [5:0] gain_array,
-	output wire [4:0] vga1_control,
-	output wire [3:0] vga2_control,
-	output wire [3:0] vga3_control
+	output reg [4:0] vga1_control,
+	output reg [3:0] vga2_control,
+	output reg [3:0] vga3_control
 	);
 
 always @(*) begin : proc_mapping

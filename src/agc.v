@@ -72,10 +72,11 @@ always @(posedge clk) begin : proc_counters
 		indicator <= 0;
 		last_adjust <= 0;
 	end else begin
-		counter1 <= (counter1_mode ? counter1 + 1 : 4'b0)
-		counter2 <= (counter2_mode ? counter2 + 1 : 4'b0)
+		counter1 <= (counter1_mode ? counter1 + 1 : 4'b0);
+		counter2 <= (counter2_mode ? counter2 + 1 : 4'b0);
 		preamble_counter <= (preamble_counter_mode ? preamble_counter + 1 : 8'b0);	
 		indicator <= (detect_mode ? (indicator || overload) : 0);
 		last_adjust <= adjust;
 	end
+end
 endmodule // agc

@@ -6,18 +6,18 @@ module agc_controller(
 	input [7:0] preamble_counter,
 	input indicator,
 	input done,
-	output wire counter1_mode,
-	output wire counter2_mode,
-	output wire preamble_counter_mode,
-	output wire detect_mode,
-	output wire adjust,
-	output wire up_dn
+	output reg counter1_mode,
+	output reg counter2_mode,
+	output reg preamble_counter_mode,
+	output reg detect_mode,
+	output reg adjust,
+	output reg up_dn
 	);
 
 //State Encoding
 localparam s_reset = 2'b00,
-		   s_detect = 2'b01;
-		   s_adjust = 2'b10;
+		   s_detect = 2'b01,
+		   s_adjust = 2'b10,
 		   s_done = 2'b11;
 
 reg [1:0] state;

@@ -16,7 +16,7 @@ always @(posedge clk) begin
 		gain_array <= 6'b100110;
 		ptr <= 3'b110;
 	end
-	else
+	else begin
 		if(adjust) begin
 			//Turn up gain, as long as gain is not maxed
 			if(up_dn && (gain_array != 6'b100110)) begin
@@ -41,4 +41,6 @@ always @(posedge clk) begin
 				ptr <= ptr - 1;
 			end
 		end
+	end
+end
 endmodule // gain_binary_search
