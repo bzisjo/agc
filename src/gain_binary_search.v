@@ -11,10 +11,11 @@ reg [2:0] ptr;
 
 assign done = (&ptr);			//When ptr = 000, and one more adjustment is made, ptr - 1 = 111, and it's the only time &ptr == 1
 
+
 always @(posedge clk) begin
 	if(!RESETn) begin
 		gain_array <= 6'b100110;
-		ptr <= 3'b110;
+		ptr <= 3'b101;
 	end
 	else begin
 		if(adjust) begin

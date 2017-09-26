@@ -3,7 +3,6 @@ module agc_controller(
 	input RESETn,
 	input [3:0] counter1,
 	input [3:0] counter2,
-	input [7:0] preamble_counter,
 	input indicator,
 	input done,
 	output reg counter1_mode,
@@ -31,14 +30,14 @@ always @(*) begin: next_state_logic
 		end
 
 		s_detect: begin
-			if((preamble_counter == 8'd127) || done)
+			if(done)
 				next_state = s_done;
 			else if(counter1 == 4'b1111)
 				next_state = s_adjust;
 		end
 
 		s_adjust: begin
-			if(preamble_counter == 8'd127 || done)
+			if(done)
 				next_state = s_done;
 			else if(counter2 == 4'b1111)
 				next_state = s_detect;
