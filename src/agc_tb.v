@@ -10,10 +10,8 @@ module agc_tb();
 	reg [5:0] target_gain;
 
 	// Don't care about these for now
-	reg [15:0] amplified_signal;
-	wire [4:0] vga1_control;
-	wire [3:0] vga2_control;
-	wire [3:0] vga3_control;
+	reg [3:0] amplified_signal;
+	wire [63:0] vga_control;
 
 	//DUT Instantiation
 	agc dut(
@@ -22,9 +20,7 @@ module agc_tb();
 		.amplified_signal(amplified_signal),
 		.overload        (overload),
 		.ext_or_int		 (1'b1),
-		.vga1_control    (vga1_control),
-		.vga2_control    (vga2_control),
-		.vga3_control    (vga3_control),
+		.vga_control	 (vga_control),
 		.gain_array_out  (gain_array_out),
 		.done_out        (done)
 		);

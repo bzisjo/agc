@@ -7,7 +7,7 @@ module agc_controller(
 	input done,
 	output reg counter1_mode,
 	output reg counter2_mode,
-	output reg preamble_counter_mode,
+	//output reg preamble_counter_mode,
 	output reg detect_mode,
 	output reg adjust,
 	output reg up_dn
@@ -56,13 +56,13 @@ end // next_state_logic
 always @(*) begin : state_actions
 	counter1_mode = 0;
 	counter2_mode = 0;
-	preamble_counter_mode = 1;
+	//preamble_counter_mode = 1;
 	detect_mode = 0;
 	adjust = 0;
 	up_dn = 1;
 	case(state)
 		s_reset: begin
-			preamble_counter_mode = 0;
+			//preamble_counter_mode = 0;
 		end
 
 		s_detect: begin 
