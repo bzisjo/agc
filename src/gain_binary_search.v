@@ -14,6 +14,28 @@ assign done = (&ptr);			//When ptr = 000, and one more adjustment is made, ptr -
 
 always @(posedge clk) begin
 	if(!RESETn) begin
+		gain_array <= 6'b111111;
+		ptr <= 3'b101;
+	end
+	else begin
+		if(adjust) begin
+			//Turn up gain, as long as gain is not maxed
+			if(up_dn && (gain_array != 6'b111111)) begin
+				gain_array[ptr] <= 0;
+				gain_array[ptr+1] <= 1;
+				ptr <= ptr - 1;
+			end
+			//Turn down gain
+			else if(!up_dn) begin 
+				gain_array[ptr] <= 0;
+				ptr <= ptr - 1;
+			end
+		end
+	end
+end
+
+/*always @(posedge clk) begin
+	if(!RESETn) begin
 		gain_array <= 6'b100110;
 		ptr <= 3'b101;
 	end
@@ -43,5 +65,6 @@ always @(posedge clk) begin
 			end
 		end
 	end
-end
+end*/
+
 endmodule // gain_binary_search

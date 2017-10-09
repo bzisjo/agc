@@ -2,7 +2,8 @@ module agc_controller(
 	input clk,
 	input RESETn,
 	input [3:0] counter1,
-	input [3:0] counter2,
+	input [7:0] counter2,
+	input [7:0] target_counter2,
 	input indicator,
 	input done,
 	output reg counter1_mode,
@@ -39,7 +40,7 @@ always @(*) begin: next_state_logic
 		s_adjust: begin
 			if(done)
 				next_state = s_done;
-			else if(counter2 == 4'b1111)
+			else if(counter2 == target_counter2)
 				next_state = s_detect;
 		end
 
